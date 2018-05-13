@@ -1,0 +1,93 @@
+x-fanta {
+	width: 1000px;
+	height: 2000px;
+	display: block;
+	position: relative;
+	-webkit-mask: url(./can-mask.png) no-repeat center;
+	-webkit-mask-size: contain;
+	filter: saturate(1.5);
+}
+
+x-fanta:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	width: 100%;
+	background: url(./can.png) no-repeat center;
+	background-size: contain;
+	pointer-events: none;
+}
+
+x-logo > * {
+	position: absolute;
+}
+
+x-logo {
+		width: 1000px;
+		height: 1000px;
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin: auto;
+		transform: rotate(-7deg) scale(1.2) translateX(-1%);
+}
+
+x-label{
+    color: white;
+    font-size: 60px;
+    text-transform: capitalize;
+    font-family: arial rounded mt bold;
+    text-align: center;
+    display: inline-block;
+    right: 40%;
+    left: 10%;
+    top: 65%;
+    line-height: 1.5;
+    /* width: 60%; */
+    z-index: 10;
+    /* background: red; */
+}
+
+x-label span{
+	background: #77B94C;
+	padding: .1em .5em;
+	display: inline-block;
+	margin-left: -.25em;
+	margin-right: -.225em;
+	margin-bottom: .1em;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+}
+
+x-fanta .logo {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+}
+
+x-fanta .edible {
+	position: absolute;
+	top: 61%;
+	left: 54%;
+	right: 0;
+	bottom: 0;
+	width: 36%;
+}
