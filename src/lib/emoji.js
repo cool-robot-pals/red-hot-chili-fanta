@@ -1,30 +1,29 @@
 const emojiDict = require('emoji-dictionary');
-
 const twemoji = require('twemoji');
 
-const badEmojiNames = [
+const emojiNameReplacements = [
 	['couplekiss', 'couple kiss'],
 	['woman', ''],
 	['man', ''],
 ];
 
-const fixBadEmojiNames = text => {
-	badEmojiNames.forEach(badName => {
-		text = text.replace(new RegExp(badName[0], 'g'), badName[1]);
+const replaceEmojiNames = text => {
+	emojiNameReplacements.forEach(_ => {
+		text = text.replace(new RegExp(_[0], 'g'), _[1]);
 	});
 	return text;
 };
 
-const getName = edible =>
-	fixBadEmojiNames((emojiDict.getName(edible) || 'mystery').toLowerCase())
+const getName = emoji =>
+	replaceEmojiNames((emojiDict.getName(emoji) || 'mystery').toLowerCase())
 		.replace(/_/g, ' ')
 		.replace(/[\d-]/g, '')
 		.replace(/ +/g, ' ')
 		.trim();
 
-const getPoint = edible =>
+const getPoint = emoji =>
 	new Promise(_ => {
-		twemoji.parse(edible, a => _(a));
+		twemoji.parse(emoji, a => _(a));
 	});
 
 module.exports = { getName, getPoint };
