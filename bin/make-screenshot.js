@@ -27,6 +27,7 @@ const takeScreenshot = async url => {
 				if (!log.product) {
 					throw new Error('invalid fanta');
 				}
+				await page.waitFor(1000); /* webfont */
 				await page.screenshot({ path: outPath, type: 'png' });
 				await browser.close();
 				yay(log);
