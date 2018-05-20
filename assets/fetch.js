@@ -8,17 +8,25 @@ const fetcher = async () => {
 
 const go = async () => {
 	const data = await fetcher();
+
+	const product = data.product;
+
 	const rotation = 5 - Math.random() * 10;
 
-	document.querySelector('x-fanta x-label').innerHTML = data.product
+	document.querySelector('x-fanta x-label').innerHTML = product.name
 		.map(_ => _.split(' '))
 		.reduce((a, b) => a.concat(b), [])
 		.map(_ => `<span>${_}</span>`)
 		.join('');
-	document.querySelector('x-fanta .edible').src = `/emoji/${data.edible}.svg`;
+	document.querySelector('x-fanta .edible').src = `/emoji/${
+		product.edible
+	}.svg`;
 	document
 		.querySelector('x-fanta')
-		.attributeStyleMap.set('background-color', `rgb(${data.hero._rgb.join()})`);
+		.attributeStyleMap.set(
+			'background-color',
+			`rgb(${product.hero._rgb.join()})`
+		);
 	document
 		.querySelector('x-fanta')
 		.attributeStyleMap.set('transform', `rotate(${rotation}deg)`);
@@ -26,7 +34,7 @@ const go = async () => {
 		.querySelector('body')
 		.attributeStyleMap.set(
 			'background-color',
-			`rgb(${data.palette[0]._rgb.join()})`
+			`rgb(${product.palette[0]._rgb.join()})`
 		);
 
 	console.log(JSON.stringify(data));

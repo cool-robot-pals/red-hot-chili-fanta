@@ -1,5 +1,5 @@
 // @flow
-const make = require('./product-maker.js');
+const make = require('./make-product.js');
 
 const mockColor = {
 	_rgb: 12,
@@ -30,9 +30,9 @@ describe('productMaker', () => {
 			palette: [mockColor],
 		});
 	});
-	it('should return a product', async () => {
+	it('should return a name', async () => {
 		expect(await make()).toMatchObject({
-			product: expect.arrayContaining([]),
+			name: expect.arrayContaining([]),
 		});
 	});
 });

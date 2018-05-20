@@ -19,7 +19,7 @@ const fiddle = color => {
 };
 
 const make = async () => {
-	const product = [];
+	const name = [];
 	const [edible, adj] = [randomArrKey(edibles), randomArrKey(adjs)];
 	const edibleName = emojiDict
 		.getName(edible)
@@ -35,14 +35,14 @@ const make = async () => {
 		`./node_modules/twemoji/2/svg/${point}.svg`
 	).then(_ => _.map(fiddle));
 
-	if (hasAdj) product.push(adj);
-	product.push(edibleName);
+	if (hasAdj) name.push(adj);
+	name.push(edibleName);
 
 	return {
 		edible: point,
 		hero: randomArrKey(palette),
 		palette,
-		product,
+		name,
 	};
 };
 

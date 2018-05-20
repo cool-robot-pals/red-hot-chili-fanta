@@ -7,15 +7,6 @@ const fs = require('fs');
 const chalk = require('chalk');
 const randomArrKey = items => items[Math.floor(Math.random() * items.length)];
 
-const vocabulary = [
-	'Beat the heat with $1!',
-	'Relax with a fresh $1',
-	'Chill alongside a $1',
-	'Try the new $1',
-	'Enjoy some $1',
-	'Ever tried $1?',
-];
-
 const client = new twitter({
 	consumer_key: process.env.TWITTER_CK,
 	consumer_secret: process.env.TWITTER_CS,
@@ -27,35 +18,19 @@ const client = new twitter({
 	try {
 		const data = await getFanta();
 
-		const product = [...data.product, 'fanta']
-			.join(' ')
-			.split(' ')
-			.map(word =>
-				word
-					.split('')
-					.map(
-						(letter, i) =>
-							i === 0 ? letter.toUpperCase() : letter.toLowerCase()
-					)
-					.join('')
-			)
-			.join(' ');
-
-		const body = randomArrKey(vocabulary).replace('$1', product);
-
 		console.info(chalk.blue(`i Post info:`));
-		console.info(body, data);
+		console.info(data.tweet, data);
 
 		await client
 			.post('media/upload', { media: fs.readFileSync(config.paths.screenie) })
 			.then(screenshot =>
 				client.post('statuses/update', {
 					media_ids: screenshot.media_id_string,
-					status: body,
+					status: data.tweet,
 				})
 			)
 			.then(tweet => {
-				console.info(chalk.green(`✔ Posted: ${body}`));
+				console.info(chalk.green(`✔ Posted: ${data.tweet}`));
 				console.info(tweet);
 				return true;
 			});
