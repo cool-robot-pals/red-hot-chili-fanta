@@ -3,7 +3,7 @@ const config = require('../.fantarc');
 const puppeteer = require('puppeteer');
 const path = require('path');
 
-const outPath = path.resolve(__dirname, '..', 'dest', 'screenie.png');
+const outPath = config.paths.screenie;
 
 const startServer = () =>
 	new Promise(rt => {
