@@ -16,6 +16,8 @@ x-fanta {
 	position: relative;
 	-webkit-mask: url(./can-mask.png) no-repeat center;
 	-webkit-mask-size: contain;
+	mask: url(./can-mask.png) no-repeat center;
+	mask-size: contain;
 }
 
 x-fanta:before {
@@ -67,16 +69,16 @@ x-label {
 	font-weight: 400;
 	text-align: center;
 	display: inline-block;
-	right: 40%;
-	left: 10%;
+	right: 42.5%;
+	left: 12.5%;
 	top: 65%;
-	line-height: 1.5;
+	line-height: 1.2;
 	z-index: 10;
 }
 
 x-label span {
 	background: #77b94c;
-	padding: 0.1em 0.5em;
+	padding: 0em 0.5em;
 	display: inline-block;
 	margin-left: -0.25em;
 	margin-right: -0.225em;
