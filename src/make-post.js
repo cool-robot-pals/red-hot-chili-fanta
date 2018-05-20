@@ -1,14 +1,10 @@
 const maker = require('./make-product');
-const randomArrKey = items => items[Math.floor(Math.random() * items.length)];
+const fs = require('fs');
+const { randomArrKey, txtToArr } = require('./lib/helper');
 
-const vocabulary = [
-	'Beat the heat with $1!',
-	'Relax with a fresh $1',
-	'Chill alongside a $1',
-	'Try the new $1',
-	'Enjoy some $1',
-	'Ever tried $1?',
-];
+const vocabulary = txtToArr(
+	fs.readFileSync('./assets/words/tweets.txt', 'utf8')
+);
 
 const makePost = async product => {
 	const name = [...product.name, 'fanta']

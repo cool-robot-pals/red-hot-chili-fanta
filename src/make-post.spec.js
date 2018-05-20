@@ -1,4 +1,3 @@
-// @flow
 const make = require('./make-post.js');
 
 const mockProduct = {
