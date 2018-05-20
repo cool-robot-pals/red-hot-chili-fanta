@@ -4,7 +4,9 @@ const twemoji = require('twemoji');
 const colors = require('get-image-colors');
 const randomArrKey = items => items[Math.floor(Math.random() * items.length)];
 
-const edibles = [...fs.readFileSync('./assets/words/edible-emoji.txt', 'utf8')];
+const edibles = fs
+	.readFileSync('./assets/words/edible-emoji.txt', 'utf8')
+	.split('\n');
 const adjs = fs
 	.readFileSync('./assets/words/adjectives.txt', 'utf8')
 	.split('\n')
