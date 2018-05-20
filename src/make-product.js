@@ -20,13 +20,11 @@ const getEdibleName = edible =>
 		.replace(/_/g, ' ')
 		.replace(/[\d-]/g, '');
 
-const edibles = fs
-	.readFileSync('./assets/words/edible-emoji.txt', 'utf8')
-	.txtToArr();
+const edibles = txtToArr(
+	fs.readFileSync('./assets/words/edible-emoji.txt', 'utf8')
+);
 
-const adjs = fs
-	.readFileSync('./assets/words/adjectives.txt', 'utf8')
-	.txtToArr();
+const adjs = txtToArr(fs.readFileSync('./assets/words/adjectives.txt', 'utf8'));
 
 const make = async () => {
 	const name = [];

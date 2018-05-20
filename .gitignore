@@ -4,3 +4,4 @@ dest/*
 !dest/.gitexists
 .env
 .glitch-assets
+.vscode
