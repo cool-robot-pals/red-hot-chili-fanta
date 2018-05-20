@@ -12,6 +12,7 @@
     "emoji-dictionary": "^1.0.9",
     "express": "^4.16.3",
     "get-image-colors": "^1.8.1",
+    "jest": "^22.4.4",
     "node-emoji": "^1.8.1",
     "node-vibrant": "^3.0.0",
     "puppeteer": "^1.4.0",
