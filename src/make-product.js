@@ -2,15 +2,8 @@ const fs = require('fs');
 const emojiDict = require('emoji-dictionary');
 const twemoji = require('twemoji');
 const colors = require('get-image-colors');
-const randomArrKey = items => items[Math.floor(Math.random() * items.length)];
 
-const edibles = fs
-	.readFileSync('./assets/words/edible-emoji.txt', 'utf8')
-	.split('\n');
-const adjs = fs
-	.readFileSync('./assets/words/adjectives.txt', 'utf8')
-	.split('\n')
-	.filter(_ => _ != '');
+const randomArrKey = items => items[Math.floor(Math.random() * items.length)];
 
 const fiddle = color => {
 	const fuzzyness = 100;
@@ -20,13 +13,24 @@ const fiddle = color => {
 	return color;
 };
 
+const getEdibleName = edible =>
+	(emojiDict.getName(edible) || 'mystery')
+		.replace(/_/g, ' ')
+		.replace(/[\d-]/g, '');
+
+const edibles = fs
+	.readFileSync('./assets/words/edible-emoji.txt', 'utf8')
+	.split('\n');
+
+const adjs = fs
+	.readFileSync('./assets/words/adjectives.txt', 'utf8')
+	.split('\n')
+	.filter(_ => _ != '');
+
 const make = async () => {
 	const name = [];
 	const [edible, adj] = [randomArrKey(edibles), randomArrKey(adjs)];
-	const edibleName = emojiDict
-		.getName(edible)
-		.replace(/_/g, ' ')
-		.replace(/[\d-]/g, '');
+	const edibleName = getEdibleName(edible);
 	const hasAdj = Math.random() > 0.2;
 
 	const point = await new Promise(_ => {
