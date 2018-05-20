@@ -1,4 +1,3 @@
-const maker = require('./make-product');
 const fs = require('fs');
 const { randomArrKey, txtToArr } = require('./lib/helper');
 

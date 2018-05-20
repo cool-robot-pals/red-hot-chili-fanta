@@ -5,7 +5,7 @@ body {
 	align-items: center;
 	justify-content: center;
 	position: absolute;
-	filter: saturate(1.75);
+	filter: saturate(1.5);
 	-webkit-font-smoothing: antialiased;
 }
 
@@ -18,7 +18,18 @@ x-fanta {
 	-webkit-mask-size: contain;
 }
 
+x-fanta:before {
+	background: url(./can.png) no-repeat center;
+	mix-blend-mode: color-dodge;
+	z-index: 98;
+}
 x-fanta:after {
+	background: url(./can-cap.png) no-repeat center;
+	z-index: 99;
+}
+
+x-fanta:after,
+x-fanta:before {
 	content: '';
 	position: absolute;
 	top: 0;
@@ -27,7 +38,6 @@ x-fanta:after {
 	bottom: 0;
 	width: 100%;
 	width: 100%;
-	background: url(./can.png) no-repeat center;
 	background-size: contain;
 	pointer-events: none;
 }
