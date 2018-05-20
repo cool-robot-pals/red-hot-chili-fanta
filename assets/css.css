@@ -62,14 +62,14 @@ x-logo {
 
 x-label {
 	color: white;
-	font-size: 65px;
+	font-size: 75px;
 	text-transform: capitalize;
 	font-family: 'Fredoka One', sans-serif;
 	font-weight: 400;
 	text-align: center;
 	display: inline-block;
-	right: 42.5%;
-	left: 12.5%;
+	right: 40%;
+	left: 10%;
 	top: 65%;
 	line-height: 1.2;
 	z-index: 10;
