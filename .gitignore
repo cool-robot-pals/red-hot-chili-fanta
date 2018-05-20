@@ -3,3 +3,4 @@ node_modules
 dest/*
 !dest/.gitexists
 .env
+.glitch-assets
