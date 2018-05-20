@@ -10,9 +10,7 @@ const vocabulary = [
 	'Ever tried $1?',
 ];
 
-const makePost = async () => {
-	const product = await maker();
-
+const makePost = async product => {
 	const name = [...product.name, 'fanta']
 		.join(' ')
 		.split(' ')
