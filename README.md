@@ -1,6 +1,6 @@
 # red-hot-chili-fanta
 
-<img src="https://pbs.twimg.com/media/DdpjX2VW0AglroO.jpg"/>
+<img src="https://pbs.twimg.com/media/DdqaWQwVMAEESUj.jpg:large"/>
 
 Source for <a href="https://twitter.com/fakefantas">@fakefantas</a> a bot that makes random Fanta flavours
 
