@@ -1,15 +1,12 @@
-// @flow
 const make = require('./make-product.js');
 
 const mockColor = {
 	_rgb: 12,
 };
 
-jest.mock('emoji-dictionary', () => ({
+jest.mock('./lib/emoji', () => ({
 	getName: jest.fn(() => 'test emoji'),
-}));
-jest.mock('twemoji', () => ({
-	parse: jest.fn((a, b) => b('testmoji')),
+	getPoint: jest.fn(() => '01234'),
 }));
 jest.mock('get-image-colors', () =>
 	jest.fn(() => Promise.resolve([mockColor]))
@@ -21,7 +18,7 @@ jest.mock('fs', () => ({
 describe('productMaker', () => {
 	it('should return an edible', async () => {
 		expect(await make()).toMatchObject({
-			edible: 'testmoji',
+			edible: '01234',
 		});
 	});
 	it('should return colors', async () => {
