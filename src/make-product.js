@@ -5,6 +5,8 @@ const colors = require('get-image-colors');
 
 const randomArrKey = items => items[Math.floor(Math.random() * items.length)];
 
+const txtToArr = txt => txt.split('\n').filter(_ => _ != '');
+
 const fiddle = color => {
 	const fuzzyness = 100;
 	[0, 1, 2].forEach(i => {
@@ -20,12 +22,11 @@ const getEdibleName = edible =>
 
 const edibles = fs
 	.readFileSync('./assets/words/edible-emoji.txt', 'utf8')
-	.split('\n');
+	.txtToArr();
 
 const adjs = fs
 	.readFileSync('./assets/words/adjectives.txt', 'utf8')
-	.split('\n')
-	.filter(_ => _ != '');
+	.txtToArr();
 
 const make = async () => {
 	const name = [];
