@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const maker = require('./product-maker');
+const maker = require('./make-post');
 
 app.use(express.static('assets'));
 app.use('/emoji', express.static('node_modules/twemoji/2/svg'));
