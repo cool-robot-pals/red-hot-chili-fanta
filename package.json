@@ -20,7 +20,7 @@
 	"devDependencies": {},
 	"scripts": {
 		"test": "jest",
-		"start": "app.js"
+		"start": "node ./app.js"
 	},
 	"repository": {
 		"type": "git",
