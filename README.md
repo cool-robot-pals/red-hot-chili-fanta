@@ -20,4 +20,8 @@ I recommend reading the code itself, (start at `app.js`!) it's pretty straightfo
 
 4. To take screenies, run `node ./bin/screenshot.js`
 
-5. To post to Twitter, you first need to make an app at apps.twitter.com (this is where the bot will post!! be careful) and get all four tokens (2 for the app 2 for the user). Then make a .env file filling in the values you see in `./bin/tweet.js`. Then just run `./bin/tweet.js`
+5. To post to Twitter, you first need to make an app at <a href="apps.twitter.com">apps.twitter.com</a> (this is where the bot will post!! be careful) and get all four tokens (2 for the app 2 for the user). Then make a <a href="https://github.com/motdotla/dotenv">.env</a> file filling in the values you see in `./bin/tweet.js`. Then just run `node ./bin/tweet.js`
+
+#### autoposting
+
+The actual live <a href="https://twitter.com/fakefantas">@fakefantas</a> is in sync with this exact codebase, it's hosted in heroku, which has a free forever tier, and there's a scheduled process that runs `node ./bin/tweet.js` hourly
