@@ -33,7 +33,7 @@ const make = async () => {
 	const edibleName = getName(edible);
 	const point = await getPoint(edible);
 	const hasAdj = Math.random() > 0.33;
-	const zero = Math.random() > 0.85;
+	const zero = Math.random() > 0.95;
 	const hasContrastRoundel = Math.random() > 0.75;
 
 	if (hasAdj) name.push(adj);
