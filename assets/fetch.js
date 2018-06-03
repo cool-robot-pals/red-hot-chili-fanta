@@ -2,7 +2,7 @@ const fetchData = async () => {
 	const data = await fetch('/make')
 		.then(_ => _.json())
 		.catch(() => {});
-	if (!data || !data.product) return fetcher();
+	if (!data || !data.product) throw 'invalid fanta';
 	else return data;
 };
 

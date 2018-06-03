@@ -12,8 +12,8 @@ body {
 
 x-zero {
 	position: absolute;
-	background: #bebebe url(./zero-sugar.svg) no-repeat;
-	background-position: 50% 37%;
+	background: #999 url(./zero-sugar.svg) no-repeat;
+	background-position: 50% 18%;
 	background-size: 60%;
 	top: 0;
 	left: 0;
