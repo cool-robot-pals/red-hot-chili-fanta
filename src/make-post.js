@@ -6,7 +6,7 @@ const vocabulary = txtToArr(
 );
 
 const makePost = async product => {
-	const name = [...product.name, 'fanta']
+	const name = [...product.name, product.zero ? 'fanta zero' : 'fanta']
 		.join(' ')
 		.split(' ')
 		.map(word =>
