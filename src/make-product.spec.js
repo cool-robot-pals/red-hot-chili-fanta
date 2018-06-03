@@ -23,8 +23,11 @@ describe('productMaker', () => {
 	});
 	it('should return colors', async () => {
 		expect(await make()).toMatchObject({
-			hero: mockColor,
-			palette: [mockColor],
+			colors: {
+				all: [mockColor],
+				roundel: mockColor,
+				hero: mockColor,
+			},
 		});
 	});
 	it('should return a name', async () => {
