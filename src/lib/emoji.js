@@ -3,6 +3,8 @@ const twemoji = require('twemoji');
 
 const emojiNameReplacements = [
 	['couplekiss', 'couple kiss'],
+	['womans', ''],
+	['mans', ''],
 	['woman', ''],
 	['man', ''],
 ];

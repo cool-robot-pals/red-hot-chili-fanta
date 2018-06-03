@@ -1,4 +1,4 @@
-const fetcher = async () => {
+const fetchData = async () => {
 	const data = await fetch('/make')
 		.then(_ => _.json())
 		.catch(() => {});
@@ -6,32 +6,54 @@ const fetcher = async () => {
 	else return data;
 };
 
-const go = async () => {
-	const data = await fetcher();
-	const product = data.product;
-	const rotation = 5 - Math.random() * 10;
+const fetchLogo = () => fetch('/logo.svg').then(res => res.text());
 
-	document.querySelector('x-fanta x-label').innerHTML = product.name
+const makeCssColor = color => `rgba(${color._rgb.map(Math.floor).join()})`;
+
+const buildUpFanta = async ($fanta, data) => {
+	const [$logoHolder, $label, $edible] = [
+		'x-logo-holder',
+		'x-label',
+		'.edible',
+	].map(_ => $fanta.querySelector(_));
+
+	const cssVars = {
+		'bg-hero': makeCssColor(data.product.colors.hero),
+		'bg-roundel': makeCssColor(data.product.colors.roundel),
+		rotation: `${5 - Math.random() * 10}deg`,
+	};
+
+	Object.entries(cssVars).forEach(([key, value]) => {
+		$fanta.style.setProperty(`--${key}`, value);
+	});
+
+	$label.innerHTML = data.product.name
 		.map(_ => _.split(' '))
 		.reduce((a, b) => a.concat(b), [])
 		.map(_ => `<span>${_}</span>`)
 		.join('');
 
-	document.querySelector('x-fanta .edible').src = `/emoji/${
-		product.edible
-	}.svg`;
+	$edible.src = `/emoji/${data.product.edible}.svg`;
 
-	document.querySelector(
-		'x-fanta'
-	).style.backgroundColor = `rgba(${product.hero._rgb.map(Math.floor).join()})`;
+	$logoHolder.innerHTML = await fetchLogo();
 
-	document.querySelector('x-fanta').style.transform = `rotate(${rotation}deg)`;
+	if (data.product.zero) {
+		const $zero = document.createElement('x-zero');
+		document.querySelector('x-fanta').appendChild($zero);
+	}
 
-	document.querySelector(
-		'body'
-	).style.backgroundColor = `rgba(${product.palette[0]._rgb
-		.map(Math.floor)
-		.join()})`;
+	return true;
+};
+
+const go = async () => {
+	const $fanta = document.querySelector('x-fanta');
+	const data = await fetchData();
+
+	document.body.style.backgroundColor = makeCssColor(
+		data.product.colors.all[0]
+	);
+
+	await buildUpFanta($fanta, data);
 
 	console.log(JSON.stringify(data));
 };

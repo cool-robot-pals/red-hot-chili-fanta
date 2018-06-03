@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Fredoka+One);
+
 body {
 	width: 100%;
 	height: 100%;
@@ -6,6 +8,17 @@ body {
 	justify-content: center;
 	position: absolute;
 	-webkit-font-smoothing: antialiased;
+}
+
+x-zero {
+	position: absolute;
+	background: #bebebe url(./zero-sugar.svg) no-repeat;
+	background-position: 50% 37%;
+	background-size: 60%;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 50%;
 }
 
 x-fanta {
@@ -17,6 +30,16 @@ x-fanta {
 	-webkit-mask-size: contain;
 	mask: url(./can-mask.png) no-repeat center;
 	mask-size: contain;
+	background-color: var(--bg-hero);
+	transform: rotate(var(--rotation));
+}
+
+x-fanta x-logo {
+	z-index: 50;
+}
+
+x-fanta x-zero {
+	z-index: 49;
 }
 
 x-fanta:before {
@@ -49,13 +72,12 @@ x-logo > * {
 
 x-logo {
 	width: 1000px;
-	height: 1000px;
+	height: 90%;
 	display: block;
 	position: absolute;
 	top: 0;
 	left: 0;
 	right: 0;
-	bottom: 0;
 	margin: auto;
 	transform: rotate(-7deg) scale(1.2) translateX(-1%);
 }
@@ -70,7 +92,7 @@ x-label {
 	display: inline-block;
 	right: 40%;
 	left: 10%;
-	top: 65%;
+	top: 60%;
 	line-height: 1.2;
 	z-index: 10;
 }
@@ -84,7 +106,7 @@ x-label span {
 	margin-bottom: 0.1em;
 }
 
-x-fanta .logo {
+x-fanta x-logo-holder {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -94,9 +116,18 @@ x-fanta .logo {
 	height: 100%;
 }
 
+x-fanta x-logo-holder svg {
+	width: 100%;
+	height: 100%;
+}
+
+x-fanta x-logo-holder #roundel {
+	fill: var(--bg-roundel);
+}
+
 x-fanta .edible {
 	position: absolute;
-	top: 61%;
+	top: 56%;
 	left: 54%;
 	right: 0;
 	bottom: 0;
