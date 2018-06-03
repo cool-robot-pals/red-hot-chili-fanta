@@ -1,4 +1,4 @@
-const fetcher = async () => {
+const fetchData = async () => {
 	const data = await fetch('/make')
 		.then(_ => _.json())
 		.catch(() => {});
@@ -6,48 +6,54 @@ const fetcher = async () => {
 	else return data;
 };
 
-const getLogo = () => fetch('/logo.svg').then(res => res.text());
+const fetchLogo = () => fetch('/logo.svg').then(res => res.text());
 
 const makeCssColor = color => `rgba(${color._rgb.map(Math.floor).join()})`;
 
-const go = async () => {
-	const data = await fetcher();
-	const product = data.product;
-	const rotation = 5 - Math.random() * 10;
+const buildUpFanta = async ($fanta, data) => {
+	const [$logoHolder, $label, $edible] = [
+		'x-logo-holder',
+		'x-label',
+		'.edible',
+	].map(_ => $fanta.querySelector(_));
 
-	const $fanta = document.querySelector('x-fanta');
-	const $logoHolder = $fanta.querySelector('x-logo-holder');
+	const cssVars = {
+		'bg-hero': makeCssColor(data.product.colors.hero),
+		'bg-roundel': makeCssColor(data.product.colors.roundel),
+		rotation: `${5 - Math.random() * 10}deg`,
+	};
 
-	$fanta.style.setProperty('--bg-hero', makeCssColor(product.colors.hero));
-	$fanta.style.setProperty(
-		'--bg-roundel',
-		makeCssColor(product.colors.roundel)
-	);
+	Object.entries(cssVars).forEach(([key, value]) => {
+		$fanta.style.setProperty(`--${key}`, value);
+	});
 
-	await getLogo().then(logo => ($logoHolder.innerHTML = logo));
+	$label.innerHTML = data.product.name
+		.map(_ => _.split(' '))
+		.reduce((a, b) => a.concat(b), [])
+		.map(_ => `<span>${_}</span>`)
+		.join('');
+
+	$edible.src = `/emoji/${data.product.edible}.svg`;
+
+	$logoHolder.innerHTML = await fetchLogo();
 
 	if (data.product.zero) {
 		const $zero = document.createElement('x-zero');
 		document.querySelector('x-fanta').appendChild($zero);
 	}
 
-	document.querySelector('x-fanta x-label').innerHTML = product.name
-		.map(_ => _.split(' '))
-		.reduce((a, b) => a.concat(b), [])
-		.map(_ => `<span>${_}</span>`)
-		.join('');
+	return true;
+};
 
-	document.querySelector('x-fanta .edible').src = `/emoji/${
-		product.edible
-	}.svg`;
+const go = async () => {
+	const $fanta = document.querySelector('x-fanta');
+	const data = await fetchData();
 
-	document.querySelector('x-fanta').style.transform = `rotate(${rotation}deg)`;
+	document.body.style.backgroundColor = makeCssColor(
+		data.product.colors.all[0]
+	);
 
-	document.querySelector(
-		'body'
-	).style.backgroundColor = `rgba(${product.colors.all[0]._rgb
-		.map(Math.floor)
-		.join()})`;
+	await buildUpFanta($fanta, data);
 
 	console.log(JSON.stringify(data));
 };
