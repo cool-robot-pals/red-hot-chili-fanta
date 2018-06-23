@@ -18,7 +18,7 @@ jest.mock('fs', () => ({
 describe('productMaker', () => {
 	it('should return an edible', async () => {
 		expect(await make()).toMatchObject({
-			edible: '01234',
+			edibles: expect.arrayContaining(['01234']),
 		});
 	});
 	it('should return colors', async () => {

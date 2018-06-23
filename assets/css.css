@@ -125,11 +125,33 @@ x-fanta x-logo-holder #roundel {
 	fill: var(--bg-roundel);
 }
 
-x-fanta .edible {
+x-fanta x-edibles {
 	position: absolute;
 	top: 56%;
 	left: 54%;
 	right: 0;
 	bottom: 0;
 	width: 36%;
+	height: 22%;
+	--offset: -15%;
+}
+
+x-fanta x-edibles img {
+	width: 100%;
+	position: absolute;
+}
+
+x-fanta x-edibles[data-length='2'] img {
+	position: absolute;
+	transform: scale(0.8);
+}
+
+x-fanta x-edibles[data-length='2'] img:last-child {
+	bottom: calc(var(--offset) * 1);
+	left: var(--offset);
+}
+
+x-fanta x-edibles[data-length='2'] img:first-child {
+	right: var(--offset);
+	top: calc(var(--offset) * 1);
 }
