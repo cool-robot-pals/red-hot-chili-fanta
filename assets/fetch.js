@@ -11,10 +11,10 @@ const fetchLogo = () => fetch('/logo.svg').then(res => res.text());
 const makeCssColor = color => `rgba(${color._rgb.map(Math.floor).join()})`;
 
 const buildUpFanta = async ($fanta, data) => {
-	const [$logoHolder, $label, $edible] = [
+	const [$logoHolder, $label, $edibles] = [
 		'x-logo-holder',
 		'x-label',
-		'.edible',
+		'x-edibles',
 	].map(_ => $fanta.querySelector(_));
 
 	const cssVars = {
@@ -33,7 +33,13 @@ const buildUpFanta = async ($fanta, data) => {
 		.map(_ => `<span>${_}</span>`)
 		.join('');
 
-	$edible.src = `/emoji/${data.product.edible}.svg`;
+	$edibles.dataset.length = data.product.edibles.length;
+
+	data.product.edibles.forEach(edible => {
+		const $edible = document.createElement('img');
+		$edible.src = `/emoji/${edible}.svg`;
+		$edibles.appendChild($edible);
+	});
 
 	$logoHolder.innerHTML = await fetchLogo();
 
