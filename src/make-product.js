@@ -29,7 +29,7 @@ const colors = async (point, hasContrastRoundel) => {
 const make = async () => {
 	const name = [];
 
-	const isTwofer = Math.random() > 0.9;
+	const isTwofer = Math.random() > 0.95;
 
 	const adj = randomArrKey(adjs);
 	const edibles = isTwofer
