@@ -12,7 +12,7 @@
 		"jest": "^23.1.0",
 		"node-emoji": "^1.8.1",
 		"node-vibrant": "^3.0.0",
-		"puppeteer": "^1.4.0",
+		"puppeteer": "^1.6.1",
 		"twemoji": "^11.0.0",
 		"twit": "^2.2.9",
 		"twitter": "^1.7.1"
