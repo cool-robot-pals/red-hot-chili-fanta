@@ -14,7 +14,7 @@
 		"node-vibrant": "^3.0.0",
 		"puppeteer": "^1.4.0",
 		"twemoji": "^11.0.0",
-		"twit": "^2.2.9",
+		"twit": "^2.2.11",
 		"twitter": "^1.7.1"
 	},
 	"devDependencies": {},
