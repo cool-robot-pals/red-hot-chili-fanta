@@ -1,5 +1,5 @@
-const emojiDict = require('emoji-dictionary');
 const twemoji = require('twemoji');
+const emojilib = require('emojilib');
 
 const emojiNameReplacements = [
 	['couplekiss', 'couple kiss'],
@@ -16,8 +16,17 @@ const replaceEmojiNames = text => {
 	return text;
 };
 
+const getEmojiName = emoji => {
+	const found = Object.entries(emojilib.lib).find(
+		([key, { char }]) => char === emoji.trim()
+	);
+
+	if (found) return found[0];
+	else return 'mystery';
+};
+
 const getName = emoji =>
-	replaceEmojiNames((emojiDict.getName(emoji) || 'mystery').toLowerCase())
+	replaceEmojiNames(getEmojiName(emoji).toLowerCase())
 		.replace(/_/g, ' ')
 		.replace(/[\d-]/g, '')
 		.replace(/ +/g, ' ')
