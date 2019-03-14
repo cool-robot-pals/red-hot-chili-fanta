@@ -1,9 +1,11 @@
 const { getName, getPoint } = require('./emoji.js');
 
-const emojiDict = require('emoji-dictionary');
-
-jest.mock('emoji-dictionary', () => ({
-	getName: jest.fn(() => 'test emoji'),
+jest.mock('emojilib', () => ({
+	lib: {
+		test_emoji: {
+			char: 'mock',
+		},
+	},
 }));
 jest.mock('twemoji', () => ({
 	parse: jest.fn((a, b) => b('0123')),
@@ -14,8 +16,7 @@ describe('getName', () => {
 		expect(getName('mock')).toBe('test emoji');
 	});
 	it('should mysterious if null', async () => {
-		emojiDict.getName.mockReturnValueOnce(undefined);
-		expect(getName('mock')).toBe('mystery');
+		expect(getName('non-existing-mock')).toBe('mystery');
 	});
 });
 
