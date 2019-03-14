@@ -8,7 +8,7 @@
 		"dotenv": "^7.0.0",
 		"emojilib": "^2.4.0",
 		"express": "^4.16.3",
-		"get-image-colors": "^1.8.1",
+		"get-image-colors": "^2.0.0",
 		"jest": "^24.0.0",
 		"node-emoji": "^1.8.1",
 		"node-vibrant": "^3.1.1",
