@@ -5,7 +5,7 @@ const makePost = require('./make-post');
 const makeProduct = require('./make-product');
 
 app.use(express.static('assets'));
-app.use('/emoji', express.static('node_modules/twemoji/2/svg'));
+app.use('/emoji', express.static('emoji/assets/svg'));
 app.get('/', function(req, res) {
 	res.sendFile(path.join(__dirname + '/../assets/index.html'));
 });

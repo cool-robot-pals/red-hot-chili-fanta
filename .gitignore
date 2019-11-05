@@ -2,6 +2,7 @@
 node_modules
 dest/*
 !dest/.gitexists
+/emoji
 .env
 .glitch-assets
 .vscode
