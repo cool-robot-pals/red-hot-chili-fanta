@@ -32,6 +32,12 @@
 	},
 	"author": "lau mayhem",
 	"license": "ISC",
+	"jest": {
+		"testPathIgnorePatterns": [
+			"/node_modules/",
+			"./emoji/"
+		]
+	},
 	"bugs": {
 		"url": "https://github.com/walaura/red-hot-chilli-fanta/issues"
 	},

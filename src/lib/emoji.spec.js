@@ -1,10 +1,8 @@
 const { getName, getPoint } = require('./emoji.js');
 
-jest.mock('emojilib', () => ({
-	lib: {
-		test_emoji: {
-			char: 'mock',
-		},
+jest.mock('unicode-emoji-json/data-by-emoji', () => ({
+	mock: {
+		name: 'test_emoji',
 	},
 }));
 jest.mock('twemoji', () => ({
