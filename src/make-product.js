@@ -12,7 +12,7 @@ const allEdibles = txtToArr(
 const adjs = txtToArr(fs.readFileSync('./assets/words/adjectives.txt', 'utf8'));
 
 const colors = async (point, hasContrastRoundel) => {
-	const all = await imgColors(`./emoji/assets/svg/${point}.svg`).then(_ =>
+	const all = await imgColors(`./emoji/${point}.svg`).then(_ =>
 		_.map(fiddleColor)
 	);
 
