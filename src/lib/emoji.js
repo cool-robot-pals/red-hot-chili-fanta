@@ -1,5 +1,5 @@
 const twemoji = require('twemoji');
-const emojilib = require('emojilib');
+const emojis = require('unicode-emoji-json/data-by-emoji');
 
 const emojiNameReplacements = [
 	['couplekiss', 'couple kiss'],
@@ -17,11 +17,11 @@ const replaceEmojiNames = text => {
 };
 
 const getEmojiName = emoji => {
-	const found = Object.entries(emojilib.lib).find(
-		([key, { char }]) => char === emoji.trim()
+	const found = Object.entries(emojis).find(
+		([key, { name }]) => key === emoji.trim()
 	);
 
-	if (found) return found[0];
+	if (found) return found[1].name;
 	else return 'mystery';
 };
 
