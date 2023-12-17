@@ -1,0 +1,18 @@
+{
+  "name": "workers",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev",
+    "start": "wrangler dev"
+  },
+  "devDependencies": {
+    "itty-router": "^3.0.12",
+    "wrangler": "^3.0.0"
+  },
+  "dependencies": {
+    "@cloudflare/puppeteer": "^0.0.5",
+    "get-svg-colors": "^2.0.1"
+  }
+}
