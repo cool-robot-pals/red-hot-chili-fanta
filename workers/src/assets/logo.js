@@ -1,3 +1,4 @@
+export const Logo = `
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="2208px" height="2208px" viewBox="0 0 2208 2208" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
@@ -35,3 +36,4 @@
         </g>
     </g>
 </svg>
+`;

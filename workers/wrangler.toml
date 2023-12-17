@@ -1,0 +1,6 @@
+name = "workers"
+node_compat = true
+main = "src/index.js"
+compatibility_date = "2023-12-06"
+
+browser = { binding = "MYBROWSER" }
