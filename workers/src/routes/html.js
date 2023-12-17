@@ -1,5 +1,3 @@
-import { Logo } from '../assets/logo';
-
 const repoUrl = 'https://raw.githubusercontent.com/cool-robot-pals/red-hot-chili-fanta/79aecbc9ad4d9bed739222c4b005cb68db469ede/assets';
 
 const css = (cssVars) => `
@@ -129,7 +127,7 @@ body {
 }
 
 .fanta .logo-holder #roundel {
-  fill: var(--bg-roundel);
+  fill: ${cssVars['bg-roundel']};
 }
 
 .fanta .edibles {
@@ -176,10 +174,10 @@ export const HTMLRoute = (props) => {
 	return new Response(
 		`<html>
 		<style>${css(cssVars)}</style>
-<body>
+		<body>
 			<div class="fanta">
 				<div class="logo">
-					<div class="logo-holder">${Logo}</div>
+					<img class="logo-holder" src="${repoUrl + '/logo.svg'}" />
 					<div class="label">
 						${label.map((l) => `<span>${l}</span>`)}
 					</div>
@@ -189,7 +187,7 @@ export const HTMLRoute = (props) => {
 				</div>
 				${props.product.zero ? `<div class="zero"></div>` : ''}
 			</div>
-</body>
+		</body>
 		</html>`,
 		{ headers: { 'Content-Type': 'text/html' } }
 	);
